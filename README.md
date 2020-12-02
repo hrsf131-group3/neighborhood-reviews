@@ -14,6 +14,71 @@
 
 ## API Endpoints
 
+### Neighborhood Info
+__Get neighborhood stats and reviews__
+* ###### `GET /neighborhoods/{neighborhood-id}`
+  * Path Parameters: `neighborhood-id`
+  * Success Status Code: 200
+  * Request Body:
+    ```
+      {
+        "neighborhood_id": 2
+      }
+    ```
+  * Response Object: JSON
+    ```
+    {
+      "neighborhood_id": 2,
+      “name”: “SOMA",
+      "stats": {
+        "dog_friendly": 0.98,
+        "grocery_stores": 0.60,
+        "neighbors_friendly": 0.82,
+        "parking_easy": 0.72,
+        "yard": 0.62,
+        "community_events": 0.88,
+        "sidewalks": 0.77,
+        "walk_night": 0.58,
+        "five_years": 0.91,
+        "kids_outside": 0.65,
+        "car": 0.43,
+        "restaurants": 0.89,
+        "streets": 0.77,
+        "holiday": 0.58,
+        "quiet": 0.49,
+        "wildlife": 0.22,
+      },
+      "reviews": {
+        {
+          "username": "Jim",
+          “user_type”: “resident”,
+          "review_date": "2 months ago",
+          "full_text" "This neighborhood is safe",
+          "likes": 997,
+          “category": {
+            "parent": false,
+            "commute": false,
+            "dog_owner": false,
+            "community": false,
+          }
+        },
+        {
+          "username": "Sally",
+          “user_type”: “resident”,
+          "review_date": "5 months ago",
+          "full_text" "This neighborhood is great",
+          "likes": 45
+          “category": {
+            "parent": true,
+            "commute": false,
+            "dog_owner": false,
+            "community": false,
+          }
+        },
+      },
+    }
+    ```
+
 ### Stats
 __Get neighborhood stats__
 * ###### `GET /neighborhoods/{neighborhood-id}/stats`
@@ -29,24 +94,25 @@ __Get neighborhood stats__
     ```
     {
       "neighborhood_id": 2,
-      “name”: “SoMA
+      “name”: “SOMA",
       "stats": {
-      "dog_friendly": 0.98,
-      "grocery_stores": 0.60,
-      "neighbors_friendly": 0.82,
-      "parking_easy": 0.72,
-      "yard": 0.62,
-      "community_events": 0.88,
-      "sidewalks": 0.77,
-      "walk_night": 0.58,
-      "five_years": 0.91,
-      "kids_outside": 0.65,
-      "car": 0.43,
-      "restaurants": 0.89,
-      "streets": 0.77,
-      "holiday": 0.58,
-      "quiet": 0.49,
-      "wildlife": 0.22,
+        "dog_friendly": 0.98,
+        "grocery_stores": 0.60,
+        "neighbors_friendly": 0.82,
+        "parking_easy": 0.72,
+        "yard": 0.62,
+        "community_events": 0.88,
+        "sidewalks": 0.77,
+        "walk_night": 0.58,
+        "five_years": 0.91,
+        "kids_outside": 0.65,
+        "car": 0.43,
+        "restaurants": 0.89,
+        "streets": 0.77,
+        "holiday": 0.58,
+        "quiet": 0.49,
+        "wildlife": 0.22,
+      },
     }
     ```
 
@@ -59,22 +125,23 @@ __Add neighborhood stats__
     {
       “name”: “Mission",
       "stats": {
-      "dog_friendly": 0.78,
-      "grocery_stores": 0.70,
-      "neighbors_friendly": 0.82,
-      "parking_easy": 0.32,
-      "yard": 0.62,
-      "community_events": 0.88,
-      "sidewalks": 0.77,
-      "walk_night": 0.28,
-      "five_years": 0.91,
-      "kids_outside": 0.65,
-      "car": 0.43,
-      "restaurants": 0.89,
-      "streets": 0.77,
-      "holiday": 0.58,
-      "quiet": 0.49,
-      "wildlife": 0.22,
+        "dog_friendly": 0.78,
+        "grocery_stores": 0.70,
+        "neighbors_friendly": 0.82,
+        "parking_easy": 0.32,
+        "yard": 0.62,
+        "community_events": 0.88,
+        "sidewalks": 0.77,
+        "walk_night": 0.28,
+        "five_years": 0.91,
+        "kids_outside": 0.65,
+        "car": 0.43,
+        "restaurants": 0.89,
+        "streets": 0.77,
+        "holiday": 0.58,
+        "quiet": 0.49,
+        "wildlife": 0.22,
+      },
     }
     ```
   * Response Object: NA
@@ -88,24 +155,25 @@ __Update neighborhood stats__
     ```
     {
       "neighborhood_id": 111,
-      “name”: “Pacific Heights
+      “name”: “Pacific Heights",
       "stats": {
-      "dog_friendly": 0.88,
-      "grocery_stores": 0.50,
-      "neighbors_friendly": 0.82,
-      "parking_easy": 0.72,
-      "yard": 0.61,
-      "community_events": 0.88,
-      "sidewalks": 0.77,
-      "walk_night": 0.58,
-      "five_years": 0.91,
-      "kids_outside": 0.65,
-      "car": 0.42,
-      "restaurants": 0.89,
-      "streets": 0.77,
-      "holiday": 0.58,
-      "quiet": 0.49,
-      "wildlife": 0.22,
+        "dog_friendly": 0.88,
+        "grocery_stores": 0.50,
+        "neighbors_friendly": 0.82,
+        "parking_easy": 0.72,
+        "yard": 0.61,
+        "community_events": 0.88,
+        "sidewalks": 0.77,
+        "walk_night": 0.58,
+        "five_years": 0.91,
+        "kids_outside": 0.65,
+        "car": 0.42,
+        "restaurants": 0.89,
+        "streets": 0.77,
+        "holiday": 0.58,
+        "quiet": 0.49,
+        "wildlife": 0.22,
+      },
     }
     ```
   * Response Object: NA
@@ -142,13 +210,12 @@ __Get neighborhood reviews__
       "full_text" "This neighborhood is safe",
       "likes": 997,
       “category": {
-          "parent": false,
-          "commute": false,
-          "dog_owner": false,
-          "community": false,
-          }
-      },
-
+        "parent": false,
+        "commute": false,
+        "dog_owner": false,
+        "community": false,
+      }
+    },
     {
       "username": "Sally",
       “user_type”: “resident”,
@@ -156,13 +223,13 @@ __Get neighborhood reviews__
       "full_text" "This neighborhood is great",
       "likes": 45
       “category": {
-          "parent": true,
-          "commute": false,
-          "dog_owner": false,
-          "community": false,
-          }
+        "parent": true,
+        "commute": false,
+        "dog_owner": false,
+        "community": false,
       }
-      ```
+    }
+    ```
 
 __Get neighborhood reviews by user__
 * ###### `GET /neighborhoods/{neighborhood-id}/reviews/{user-id}`
@@ -184,14 +251,15 @@ __Get neighborhood reviews by user__
       "full_text" "This neighborhood has a great community",
       "likes": 997,
       “category": {
-          "parent": true,
-          "commute": false,
-          "dog_owner": true,
-          "community": true,
-        }
+        "parent": true,
+        "commute": false,
+        "dog_owner": true,
+        "community": true,
+      }
     }
     ```
 
+__Add neighborhood reviews__
 * ###### `POST /neighborhoods/{neighborhood-id}/reviews`
   * Path Parameters: `neighborhood-id`
   * Success Status Code: 201
@@ -206,15 +274,16 @@ __Get neighborhood reviews by user__
       "full_text" "I love the park",
       "likes": 70,
       “category": {
-          "parent": true,
-          "commute": false,
-          "dog_owner": true,
-          "community": true,
-          }
+        "parent": true,
+        "commute": false,
+        "dog_owner": true,
+        "community": true,
+        }
     }
     ```
   * Response Object: HTTP Status 201
 
+__Update neighborhood reviews by user__
 * ###### `PUT /neighborhoods/{neighborhood-id}/reviews/{user-id}`
   * Path Parameters: `neighborhood-id`, `user-id`
   * Success Status Code: 201
@@ -229,15 +298,16 @@ __Get neighborhood reviews by user__
       "full_text" "I love the park",
       "likes": 70,
       “category": {
-          "parent": true,
-          "commute": false,
-          "dog_owner": true,
-          "community": true,
-          }
+        "parent": true,
+        "commute": false,
+        "dog_owner": true,
+        "community": true,
+        }
     }
     ```
   * Response Object: NA
 
+__Delete neighborhood reviews by user__
 * ###### `DELETE /neighborhoods/{neighborhood-id}/reviews/{user-id}`
   * Path Parameters: `neighborhood-id`, `user-id `
   * Success Status Code: 204
