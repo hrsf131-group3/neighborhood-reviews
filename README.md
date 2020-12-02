@@ -19,10 +19,16 @@ __Get neighborhood stats__
 * ###### `GET /neighborhoods/{neighborhood-id}/stats`
   * Path Parameters: `neighborhood-id`
   * Success Status Code: 200
+  * Request Body:
+    ```
+      {
+        "neighborhood_id": 2
+      }
+    ```
   * Response Object: JSON
     ```
     {
-      "neighborhood_id": 111,
+      "neighborhood_id": 2,
       “name”: “SoMA
       "stats": {
       "dog_friendly": 0.98,
@@ -44,12 +50,44 @@ __Get neighborhood stats__
     }
     ```
 
-__Update neighborhood stats__
-* ###### `PUT /neighborhoods/{neighborhood-id}/stats`
+__Add neighborhood stats__
+* ###### `POST /neighborhoods/stats`
+  * Path Parameters: NA
+  * Success Status Code: 201
   * Request Body:
     ```
     {
-      "neighborhood_id": 112,
+      “name”: “Mission",
+      "stats": {
+      "dog_friendly": 0.78,
+      "grocery_stores": 0.70,
+      "neighbors_friendly": 0.82,
+      "parking_easy": 0.32,
+      "yard": 0.62,
+      "community_events": 0.88,
+      "sidewalks": 0.77,
+      "walk_night": 0.28,
+      "five_years": 0.91,
+      "kids_outside": 0.65,
+      "car": 0.43,
+      "restaurants": 0.89,
+      "streets": 0.77,
+      "holiday": 0.58,
+      "quiet": 0.49,
+      "wildlife": 0.22,
+    }
+    ```
+  * Response Object: NA
+
+
+__Update neighborhood stats__
+* ###### `PUT /neighborhoods/{neighborhood-id}/stats`
+  * Path Parameters: `neighborhood-id`
+  * Success Status Code: 201
+  * Request Body:
+    ```
+    {
+      "neighborhood_id": 111,
       “name”: “Pacific Heights
       "stats": {
       "dog_friendly": 0.88,
@@ -70,26 +108,32 @@ __Update neighborhood stats__
       "wildlife": 0.22,
     }
     ```
-  * Response Object: HTTP Status 201
+  * Response Object: NA
 
+__Delete neighborhood stats__
 * ###### `DELETE /neighborhoods/{neighborhood-id}/stats`
+  * Path Parameters: `neighborhood-id`
+  * Success Status Code: 204
   * Request Body:
     ```
     {
       "neighborhood_id": 111
     }
     ```
-  * Response Object: HTTP Status 204
+  * Response Object: NA
 
 ### Reviews
+__Get neighborhood reviews__
 * ###### `GET /neighborhoods/{neighborhood-id}/reviews`
+  * Path Parameters: `neighborhood-id`
+  * Success Status Code: 200
   * Request Body:
     ```
     {
       "neighborhood_id": 111
     }
     ```
-  * Response Object: HTTP Status 200
+  * Response Object: JSON
     ```
     {
       "username": "Jim",
@@ -120,7 +164,10 @@ __Update neighborhood stats__
       }
       ```
 
+__Get neighborhood reviews by user__
 * ###### `GET /neighborhoods/{neighborhood-id}/reviews/{user-id}`
+  * Path Parameters: `neighborhood-id`, `user-id`
+  * Success Status Code: 200
   * Request Body:
     ```
     {
@@ -128,7 +175,7 @@ __Update neighborhood stats__
       "user_id": 20
     }
     ```
-  * Response Object: HTTP Status 200
+  * Response Object: JSON
     ```
     {
       "username": "John",
@@ -145,7 +192,9 @@ __Update neighborhood stats__
     }
     ```
 
-* ###### `POST /neighborhoods/{neighborhood-id}/reviews/{user-id}`
+* ###### `POST /neighborhoods/{neighborhood-id}/reviews`
+  * Path Parameters: `neighborhood-id`
+  * Success Status Code: 201
   * Request Body:
     ```
     {
@@ -167,6 +216,8 @@ __Update neighborhood stats__
   * Response Object: HTTP Status 201
 
 * ###### `PUT /neighborhoods/{neighborhood-id}/reviews/{user-id}`
+  * Path Parameters: `neighborhood-id`, `user-id`
+  * Success Status Code: 201
   * Request Body:
     ```
     {
@@ -185,9 +236,11 @@ __Update neighborhood stats__
           }
     }
     ```
-  * Response Object: HTTP Status 201
+  * Response Object: NA
 
 * ###### `DELETE /neighborhoods/{neighborhood-id}/reviews/{user-id}`
+  * Path Parameters: `neighborhood-id`, `user-id `
+  * Success Status Code: 204
   * Request Body:
     ```
     {
@@ -195,4 +248,4 @@ __Update neighborhood stats__
       "user_id": 20
     }
     ```
-  * Response Object: HTTP Status 204
+  * Response Object: NA
