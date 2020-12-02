@@ -15,17 +15,37 @@
 ## API Endpoints
 
 ### Stats
-* `GET /neighborhoods/{id}/stats`
-  * _Get all stats by 'neighborhood id'_
-  * Path params: {id}
+* #### `GET /neighborhoods/{neighborhood-id}/stats`
+  * Path params: `neighborhood-id`
   * Request Body:
   * Response Object:
-* `PUT /neighborhoods/{id}/stats`: Update all stats identified by 'neighborhood id'
-* `DELETE /neighborhoods/{id}/stats`: Delete stats by 'neighborhood id'
+* #### `PUT /neighborhoods/{neighborhood-id}/stats`
+  * Path params: `neighborhood-id`
+  * Request Body:
+  * Response Object:
+* #### `DELETE /neighborhoods/{neighborhood-id}/stats`
+  * Path params: `neighborhood-id`
+  * Request Body:
+  * Response Object:
 
 ### Reviews
-* `GET /neighborhoods/{id}/reviews`: Get all reviews identified by 'neighborhood id'
-* `GET /neighborhoods/{id}/reviews/{user-id}`: Get user review identified by 'neighborhood & user id'
-* `POST /neighborhoods/{id}/reviews/{user-id}`: Create a new user review
-* `PUT /neighborhoods/{id}/reviews/{user-id}`: Update user review identified by 'neighborhood & user id'
-* `DELETE /neighborhoods/{id}/reviews/{user-id}`: Delete user review identified by 'neighborhood & user id'
+* #### `GET /neighborhoods/{neighborhood-id}/reviews`
+  * Path params: `neighborhood-id`
+  * Request Body:
+  * Response Object:
+* #### `GET /neighborhoods/{neighborhood-id}/reviews/{user-id}`
+  * Path params: `neighborhood-id`, `user-id`
+  * Request Body:
+  * Response Object:
+* #### `POST /neighborhoods/{neighborhood-id}/reviews/{user-id}`
+  * Path params: `neighborhood-id`, `user-id`
+  * Request Body:
+  * Response Object:
+* #### `PUT /neighborhoods/{neighborhood-id}/reviews/{user-id}`
+  * Path params: `neighborhood-id`, `user-id`
+  * Request Body:
+  * Response Object:
+* #### `DELETE /neighborhoods/{neighborhood-id}/reviews/{user-id}`
+  * Path params: `neighborhood-id`, `user-id`
+  * Request Body:
+  * Response Object:
