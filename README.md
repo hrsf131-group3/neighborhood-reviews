@@ -15,14 +15,11 @@
 ## API Endpoints
 
 ### Stats
+__Get neighborhood stats__
 * ###### `GET /neighborhoods/{neighborhood-id}/stats`
-  * Request Body:
-    ```
-    {
-      "neighborhood_id": 111
-    }
-    ```
-  * Response Object: HTTP Status 200
+  * Path Parameters: `neighborhood-id`
+  * Success Status Code: 200
+  * Response Object: JSON
     ```
     {
       "neighborhood_id": 111,
@@ -47,6 +44,7 @@
     }
     ```
 
+__Update neighborhood stats__
 * ###### `PUT /neighborhoods/{neighborhood-id}/stats`
   * Request Body:
     ```
@@ -88,7 +86,7 @@
   * Request Body:
     ```
     {
-      "heighborhood_id": 111
+      "neighborhood_id": 111
     }
     ```
   * Response Object: HTTP Status 200
@@ -126,7 +124,7 @@
   * Request Body:
     ```
     {
-      "heighborhood_id": 111,
+      "neighborhood_id": 111,
       "user_id": 20
     }
     ```
@@ -151,7 +149,7 @@
   * Request Body:
     ```
     {
-      "heighborhood_id": 100,
+      "neighborhood_id": 100,
       "user_id": 22,
       "username": "Kayla",
       “user_type”: “resident”,
@@ -172,7 +170,7 @@
   * Request Body:
     ```
     {
-      "heighborhood_id": 100,
+      "neighborhood_id": 100,
       "user_id": 22,
       "username": "Kayla",
       “user_type”: “resident”,
@@ -193,7 +191,7 @@
   * Request Body:
     ```
     {
-      "heighborhood_id": 111,
+      "neighborhood_id": 111,
       "user_id": 20
     }
     ```
