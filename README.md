@@ -1,13 +1,6 @@
-# Project Name
+# Neighborhood Reviews
 
 > This projects features a mock version of Turila's neighborhood reviews. Users can see neighborhood stats and filter reviews based on a variety of categories.
-
-
-## Table of Contents
-
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
 
 ## Set-up
 
@@ -19,4 +12,20 @@
 
 - Node 14.15.0
 
+## API Endpoints
 
+### Stats
+* `GET /neighborhoods/{id}/stats`
+  * _Get all stats by 'neighborhood id'_
+  * Path params: {id}
+  * Request Body:
+  * Response Object:
+* `PUT /neighborhoods/{id}/stats`: Update all stats identified by 'neighborhood id'
+* `DELETE /neighborhoods/{id}/stats`: Delete stats by 'neighborhood id'
+
+### Reviews
+* `GET /neighborhoods/{id}/reviews`: Get all reviews identified by 'neighborhood id'
+* `GET /neighborhoods/{id}/reviews/{user-id}`: Get user review identified by 'neighborhood & user id'
+* `POST /neighborhoods/{id}/reviews/{user-id}`: Create a new user review
+* `PUT /neighborhoods/{id}/reviews/{user-id}`: Update user review identified by 'neighborhood & user id'
+* `DELETE /neighborhoods/{id}/reviews/{user-id}`: Delete user review identified by 'neighborhood & user id'
