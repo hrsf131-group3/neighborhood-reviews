@@ -1,6 +1,6 @@
 # Neighborhood Reviews
 
-> This projects features a mock version of Turila's neighborhood reviews. Users can see neighborhood stats and filter reviews based on a variety of categories.
+> This projects features a mock version of Truila's neighborhood reviews. Users can see neighborhood stats and filter reviews based on a variety of categories.
 
 ## Set-up
 
@@ -284,14 +284,14 @@ __Add neighborhood reviews__
   * Response Object: HTTP Status 201
 
 __Update neighborhood reviews by user__
-* ###### `PUT /neighborhoods/{neighborhood-id}/reviews/{user-id}`
-  * Path Parameters: `neighborhood-id`, `user-id`
+* ###### `PUT /neighborhoods/{neighborhood-id}/reviews/{id}`
+  * Path Parameters: `neighborhood-id`, `id` (review id)
   * Success Status Code: 201
   * Request Body:
     ```
     {
       "neighborhood_id": 100,
-      "user_id": 22,
+      "id": 22,
       "username": "Kayla",
       “user_type”: “resident”,
       "review_date": "7 months ago",
@@ -308,14 +308,14 @@ __Update neighborhood reviews by user__
   * Response Object: NA
 
 __Delete neighborhood reviews by user__
-* ###### `DELETE /neighborhoods/{neighborhood-id}/reviews/{user-id}`
-  * Path Parameters: `neighborhood-id`, `user-id `
+* ###### `DELETE /neighborhoods/{neighborhood-id}/reviews/{id}`
+  * Path Parameters: `neighborhood-id`, `id` (review id)
   * Success Status Code: 204
   * Request Body:
     ```
     {
       "neighborhood_id": 111,
-      "user_id": 20
+      "id": 20
     }
     ```
   * Response Object: NA
