@@ -108,8 +108,8 @@ async function generateCSV() {
   await generateListings(10000000, 10000);
   // generate 10K users
   await generateUsers(10000);
-  // generate 10K reviews with 10K users and neighborhoods
-  await generateReviews(10000, 10000, 10000);
+  // generate 100K reviews with 10K users and 10K neighborhoods
+  await generateReviews(100000, 10000, 10000);
 }
 
 generateCSV();

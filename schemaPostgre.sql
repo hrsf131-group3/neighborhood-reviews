@@ -4,7 +4,7 @@ CREATE DATABASE homes;
 USE homes;
 
 CREATE TABLE neighborhoods (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   dogFriendly DECIMAL(3, 2) NOT NULL,
   groceryStores DECIMAL(3, 2) NOT NULL,
@@ -25,13 +25,13 @@ CREATE TABLE neighborhoods (
 );
 
 CREATE TABLE listings (
-  id INT NOT NULL AUTO_INCREMENT P RIMARY KEY,
+  id SERIAL PRIMARY KEY,
   neighborhoodId INT NOT NULL,
   FOREIGN KEY (neighborhoodId) REFERENCES neighborhoods(id)
 );
 
 CREATE TABLE users (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   name VARCHAR(45) NOT NULL,
   userType VARCHAR(45) NOT NULL,
   dogOwner BOOLEAN NOT NULL,
@@ -39,11 +39,11 @@ CREATE TABLE users (
 );
 
 CREATE TABLE reviews (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   userId INT NOT NULL,
   neighborhoodId INT NOT NULL,
   reviewDate VARCHAR(255) NOT NULL,
-  reviewText LONGTEXT NOT NULL,
+  reviewText TEXT NOT NULL,
   likes INT NOT NULL,
   community BOOLEAN NOT NULL,
   commute BOOLEAN NOT NULL,
