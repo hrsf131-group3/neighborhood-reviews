@@ -105,7 +105,7 @@ async function generateCSV() {
   // generate 10K neighborhoods
   await generateNeighborhoods(10000);
   // generate 10M listings with 10K neighborhoods
-  await generateListings(1000000, 10000);
+  await generateListings(10000000, 10000);
   // generate 10K users
   await generateUsers(10000);
   // generate 10K reviews with 10K users and neighborhoods
