@@ -21,7 +21,6 @@ function writeStatsByNeighborhood(numNeighborhoods, writer, encoding, callback) 
       if (idx % 100000 === 0) {
         bar1.update(idx);
       }
-      const neighborhoodId = idx;
       const neighborhood = `neighborhood${idx}`;
       const dogFriendly = Math.random().toFixed(2);
       const groceryStores = Math.random().toFixed(2);
@@ -39,7 +38,7 @@ function writeStatsByNeighborhood(numNeighborhoods, writer, encoding, callback) 
       const holiday = Math.random().toFixed(2);
       const quiet = Math.random().toFixed(2);
       const wildlife = Math.random().toFixed(2);
-      const data = `${neighborhoodId},${neighborhood},${dogFriendly},${groceryStores},${neighborsFriendly},${parkingEasy},${yard},${communityEvents},${sidewalks},${walkNight},${fiveYears},${kidsOutside},${car},${restaurants},${streets},${holiday},${quiet},${wildlife}\n`;
+      const data = `${neighborhood},${dogFriendly},${groceryStores},${neighborsFriendly},${parkingEasy},${yard},${communityEvents},${sidewalks},${walkNight},${fiveYears},${kidsOutside},${car},${restaurants},${streets},${holiday},${quiet},${wildlife}\n`;
       if (i === 0) {
         writer.write(data, encoding, callback);
       } else {

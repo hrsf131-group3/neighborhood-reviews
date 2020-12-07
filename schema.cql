@@ -4,10 +4,12 @@ CREATE KEYSPACE homes WITH replication =
 CREATE TABLE homes.listings (
   listingId int,
   neighborhoodId int,
+  neighborhood text,
   PRIMARY KEY (listingId) )
   WITH comment = 'Q1. Find listings';
 
 CREATE TABLE homes.stats_by_neighborhood (
+  neighborhoodId int,
   neighborhood text,
   dogFriendly decimal,
   groceryStores decimal,
@@ -25,11 +27,11 @@ CREATE TABLE homes.stats_by_neighborhood (
   holiday decimal,
   quiet decimal,
   wildlife decimal,
-  PRIMARY KEY (neighborhood) )
-  WITH comment = 'Q1. Find information about a listing';
+  PRIMARY KEY (neighborhoodId) )
+  WITH comment = 'Q2. Find stats by neighborhood';
 
 CREATE TABLE homes.reviews_by_neighborhood (
-  neighborhood text,
+  neighborhoodId int,
   username text,
   userType text,
   dogOwner boolean,
@@ -39,6 +41,6 @@ CREATE TABLE homes.reviews_by_neighborhood (
   likes int,
   community boolean,
   commute boolean,
-  PRIMARY KEY ((neighborhood), reviewDate) )
-  WITH comment = 'Q2. Find reviews by listing id'
+  PRIMARY KEY ((neighborhoodId), reviewDate) )
+  WITH comment = 'Q3. Find reviews by neighborhood'
   AND CLUSTERING ORDER BY (reviewDate ASC) ;
