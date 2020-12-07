@@ -1,6 +1,9 @@
 const LorenIpsum = require('lorem-ipsum').LoremIpsum;
 const fs = require('fs');
 const faker = require('faker');
+const cliProgress = require('cli-progress');
+
+const bar1 = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
 
 const boolean = ['true', 'false'];
 const userTypes = ['Resident', 'Visitor', 'Resident', 'Resident', 'Resident'];
@@ -26,18 +29,23 @@ const writeReviewsSQL = fs.createWriteStream('reviews.csv');
 writeReviewsSQL.write('userId,neighborhoodId,reviewDate,reviewText,'
     + 'likes,community,commute\n', 'utf8');
 
-// const writeReviewsNoSQL = fs.createWriteStream('reviewsByNeighborhood.csv');
-// writeReviewsNoSQL.write('neighborhoodId,username,userType,dogOwner,parent,'
-//     + 'reviewDate,reviewText,likes,community,commute\n', 'utf8');
+const writeReviewsNoSQL = fs.createWriteStream('reviewsByNeighborhood.csv');
+writeReviewsNoSQL.write('neighborhoodId,username,userType,dogOwner,parent,'
+    + 'reviewDate,reviewText,likes,community,commute\n', 'utf8');
 
 function generateReviews(db, numReviews, numUsers, numNeighborhoods, writer, encoding, callback) {
   let i = numReviews;
   let idx = 0;
+  bar1.start(numNeighborhoods, 0);
+
   function write() {
     let ok = true;
     do {
       i -= 1;
       idx += 1;
+      if (idx % 100000 === 0) {
+        bar1.update(idx);
+      }
       // for nosql only
       const neighborhoodIdNoSQL = idx;
       const username = faker.name.findName();
@@ -69,10 +77,14 @@ function generateReviews(db, numReviews, numUsers, numNeighborhoods, writer, enc
 }
 
 // generate 100M reviews with 10M users and 10M neighborhoods
-generateReviews('sql', 100000000, 10000000, 10000000, writeReviewsSQL, 'utf-8', () => {
-  writeReviewsSQL.end();
-});
+async function generateCSV() {
+  await generateReviews('sql', 100000000, 10000000, 10000000, writeReviewsSQL, 'utf-8', () => {
+    writeReviewsSQL.end();
+  });
+  await generateReviews('nosql', 100000000, 10000000, 10000000, writeReviewsNoSQL, 'utf-8', () => {
+    writeReviewsNoSQL.end();
+  });
+}
 
-// generateReviews('nosql', 100000000, 10000000, 10000000, writeReviewsNoSQL, 'utf-8', () => {
-//   writeReviewsNoSQL.end();
-// });
+generateCSV();
+

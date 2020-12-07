@@ -1,7 +1,13 @@
-CREATE KEYSPACE listings WITH replication =
+CREATE KEYSPACE homes WITH replication =
   {'class': 'SimpleStrategy', 'replication_factor' : 1};
 
-CREATE TABLE listings.neighborhoods (
+CREATE TABLE homes.listings (
+  listingId int,
+  neighborhoodId int,
+  PRIMARY KEY (listingId) )
+  WITH comment = 'Q1. Find listings';
+
+CREATE TABLE homes.stats_by_neighborhood (
   neighborhood text,
   dogFriendly decimal,
   groceryStores decimal,
@@ -22,7 +28,7 @@ CREATE TABLE listings.neighborhoods (
   PRIMARY KEY (neighborhood) )
   WITH comment = 'Q1. Find information about a listing';
 
-CREATE TABLE listings.reviews_by_neighborhood (
+CREATE TABLE homes.reviews_by_neighborhood (
   neighborhood text,
   username text,
   userType text,
