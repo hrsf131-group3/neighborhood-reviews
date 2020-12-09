@@ -81,7 +81,7 @@ async function generateCSV() {
   // await generateReviews('sql', 100000000, 10000000, 10000000, writeReviewsSQL, 'utf-8', () => {
   //   writeReviewsSQL.end();
   // });
-  await generateReviews('nosql', 1000, 100, 100, 200000000, writeReviewsNoSQL, 'utf-8', () => {
+  await generateReviews('nosql', 100000000, 10000000, 10000000, 200000000, writeReviewsNoSQL, 'utf-8', () => {
     writeReviewsNoSQL.end();
   });
 }
