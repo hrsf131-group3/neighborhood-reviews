@@ -11,22 +11,22 @@ CREATE TABLE homes.listings (
 CREATE TABLE homes.stats_by_neighborhood (
   neighborhoodId int,
   neighborhood text,
-  dogFriendly decimal,
-  groceryStores decimal,
-  neighborsFriendly decimal,
-  parkingEasy decimal,
-  yard decimal,
-  communityEvents decimal,
-  sidewalks decimal,
-  walkNight decimal,
-  fiveYears decimal,
-  kidsOutside decimal,
-  car decimal,
-  restaurants decimal,
-  streets decimal,
-  holiday decimal,
-  quiet decimal,
-  wildlife decimal,
+  dogFriendly float,
+  groceryStores float,
+  neighborsFriendly float,
+  parkingEasy float,
+  yard float,
+  communityEvents float,
+  sidewalks float,
+  walkNight float,
+  fiveYears float,
+  kidsOutside float,
+  car float,
+  restaurants float,
+  streets float,
+  holiday float,
+  quiet float,
+  wildlife float,
   PRIMARY KEY (neighborhoodId) )
   WITH comment = 'Q2. Find stats by neighborhood';
 
@@ -36,11 +36,10 @@ CREATE TABLE homes.reviews_by_neighborhood (
   userType text,
   dogOwner boolean,
   parent boolean,
-  reviewDate date,
+  reviewDate text,
   reviewText text,
   likes int,
   community boolean,
   commute boolean,
-  PRIMARY KEY ((neighborhoodId), reviewDate) )
+  PRIMARY KEY (neighborhoodId) )
   WITH comment = 'Q3. Find reviews by neighborhood'
-  AND CLUSTERING ORDER BY (reviewDate ASC) ;
