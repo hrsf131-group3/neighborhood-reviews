@@ -4,11 +4,11 @@ const cliProgress = require('cli-progress');
 const bar1 = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
 
 const writeStats = fs.createWriteStream('statsByNeighborhood.csv');
-writeStats.write('neighborhoodId,neighborhood,dogFriendly,groceryStores,neighborsFriendly,'
+writeStats.write('listingId,neighborhoodId,neighborhood,dogFriendly,groceryStores,neighborsFriendly,'
     + 'parkingEasy,yard,communityEvents,sidewalks,walkNight,fiveYears,kidsOutside,car,restaurants,'
     + 'streets,holiday,quiet,wildlife\n', 'utf8');
 
-function writeStatsByNeighborhood(numNeighborhoods, writer, encoding, callback) {
+function writeStatsByNeighborhood(numNeighborhoods, numListings, writer, encoding, callback) {
   let i = numNeighborhoods;
   let idx = 0;
   bar1.start(numNeighborhoods, 0);
@@ -21,6 +21,7 @@ function writeStatsByNeighborhood(numNeighborhoods, writer, encoding, callback) 
       if (idx % 100000 === 0) {
         bar1.update(idx);
       }
+      const listingId = Math.floor(Math.random() * numListings) + 1;
       const neighborhoodId = idx;
       const neighborhood = `neighborhood${idx}`;
       const dogFriendly = Math.random().toFixed(2);
@@ -39,7 +40,7 @@ function writeStatsByNeighborhood(numNeighborhoods, writer, encoding, callback) 
       const holiday = Math.random().toFixed(2);
       const quiet = Math.random().toFixed(2);
       const wildlife = Math.random().toFixed(2);
-      const data = `${neighborhoodId},${neighborhood},${dogFriendly},${groceryStores},${neighborsFriendly},${parkingEasy},${yard},${communityEvents},${sidewalks},${walkNight},${fiveYears},${kidsOutside},${car},${restaurants},${streets},${holiday},${quiet},${wildlife}\n`;
+      const data = `${listingId},${neighborhoodId},${neighborhood},${dogFriendly},${groceryStores},${neighborsFriendly},${parkingEasy},${yard},${communityEvents},${sidewalks},${walkNight},${fiveYears},${kidsOutside},${car},${restaurants},${streets},${holiday},${quiet},${wildlife}\n`;
       if (i === 0) {
         writer.write(data, encoding, callback);
       } else {
@@ -54,6 +55,6 @@ function writeStatsByNeighborhood(numNeighborhoods, writer, encoding, callback) 
 }
 
 // write records for 10M neighborhoods
-writeStatsByNeighborhood(10000000, writeStats, 'utf-8', () => {
+writeStatsByNeighborhood(10000000, 200000000, writeStats, 'utf-8', () => {
   writeStats.end();
 });

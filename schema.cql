@@ -9,6 +9,7 @@ CREATE TABLE homes.listings (
   WITH comment = 'Q1. Find listings';
 
 CREATE TABLE homes.stats_by_neighborhood (
+  listingId int,
   neighborhoodId int,
   neighborhood text,
   dogFriendly float,
@@ -27,10 +28,11 @@ CREATE TABLE homes.stats_by_neighborhood (
   holiday float,
   quiet float,
   wildlife float,
-  PRIMARY KEY (neighborhoodId) )
+  PRIMARY KEY (listingId) )
   WITH comment = 'Q2. Find stats by neighborhood';
 
 CREATE TABLE homes.reviews_by_neighborhood (
+  listingId int,
   neighborhoodId int,
   username text,
   userType text,
@@ -41,5 +43,5 @@ CREATE TABLE homes.reviews_by_neighborhood (
   likes int,
   community boolean,
   commute boolean,
-  PRIMARY KEY (neighborhoodId) )
+  PRIMARY KEY (listingId) )
   WITH comment = 'Q3. Find reviews by neighborhood'
