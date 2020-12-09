@@ -25,15 +25,15 @@ const textGenerator = new LorenIpsum({
   },
 });
 
-const writeReviewsSQL = fs.createWriteStream('reviews.csv');
-writeReviewsSQL.write('userId,neighborhoodId,reviewDate,reviewText,'
-    + 'likes,community,commute\n', 'utf8');
+// const writeReviewsSQL = fs.createWriteStream('reviews.csv');
+// writeReviewsSQL.write('userId,neighborhoodId,reviewDate,reviewText,'
+//     + 'likes,community,commute\n', 'utf8');
 
 const writeReviewsNoSQL = fs.createWriteStream('reviewsByNeighborhood.csv');
-writeReviewsNoSQL.write('neighborhoodId,username,userType,dogOwner,parent,'
+writeReviewsNoSQL.write('listingId,neighborhoodId,username,userType,dogOwner,parent,'
     + 'reviewDate,reviewText,likes,community,commute\n', 'utf8');
 
-function generateReviews(db, numReviews, numUsers, numNeighborhoods, writer, encoding, callback) {
+function generateReviews(db, numReviews, numUsers, numNeighborhoods, numListings, writer, encoding, callback) {
   let i = numReviews;
   let idx = 0;
   bar1.start(numNeighborhoods, 0);
@@ -52,6 +52,7 @@ function generateReviews(db, numReviews, numUsers, numNeighborhoods, writer, enc
       const dogOwner = boolean[i % 2];
       const parent = boolean[i % 2];
       // for nosql and sql
+      const listingId = Math.floor(Math.random() * numListings) + 1;
       const neighborhoodId = Math.floor(Math.random() * numNeighborhoods) + 1;
       const userId = Math.floor(Math.random() * numUsers) + 1;
       const reviewDate = randomDate();
@@ -59,7 +60,7 @@ function generateReviews(db, numReviews, numUsers, numNeighborhoods, writer, enc
       const likes = Math.floor(Math.random() * 150) + 1;
       const community = boolean[i % 2];
       const commute = boolean[i % 2];
-      const dataNoSQL = `${neighborhoodId},${username},${userType},${dogOwner},${parent},${reviewDate},${reviewText},${likes},${community},${commute}\n`;
+      const dataNoSQL = `${listingId},${neighborhoodId},${username},${userType},${dogOwner},${parent},${reviewDate},${reviewText},${likes},${community},${commute}\n`;
       const dataSQL = `${userId},${neighborhoodId},${reviewDate},${reviewText},${likes},${community},${commute}\n`;
       const data = db === 'sql' ? dataSQL : dataNoSQL;
       if (i === 0) {
@@ -77,10 +78,10 @@ function generateReviews(db, numReviews, numUsers, numNeighborhoods, writer, enc
 
 // generate 100M reviews with 10M users and 10M neighborhoods
 async function generateCSV() {
-  await generateReviews('sql', 100000000, 10000000, 10000000, writeReviewsSQL, 'utf-8', () => {
-    writeReviewsSQL.end();
-  });
-  await generateReviews('nosql', 100000000, 10000000, 10000000, writeReviewsNoSQL, 'utf-8', () => {
+  // await generateReviews('sql', 100000000, 10000000, 10000000, writeReviewsSQL, 'utf-8', () => {
+  //   writeReviewsSQL.end();
+  // });
+  await generateReviews('nosql', 100000000, 10000000, 10000000, 200000000, writeReviewsNoSQL, 'utf-8', () => {
     writeReviewsNoSQL.end();
   });
 }
