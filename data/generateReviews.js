@@ -47,21 +47,20 @@ function generateReviews(db, numReviews, numUsers, numNeighborhoods, writer, enc
         bar1.update(idx);
       }
       // for nosql only
-      const neighborhoodIdNoSQL = idx;
       const username = faker.name.findName();
       const userType = userTypes[i % 5];
       const dogOwner = boolean[i % 2];
       const parent = boolean[i % 2];
       // for nosql and sql
+      const neighborhoodId = Math.floor(Math.random() * numNeighborhoods) + 1;
       const userId = Math.floor(Math.random() * numUsers) + 1;
-      const neighborhoodIdSQL = Math.floor(Math.random() * numNeighborhoods) + 1;
       const reviewDate = randomDate();
       const reviewText = textGenerator.generateParagraphs(1);
       const likes = Math.floor(Math.random() * 150) + 1;
       const community = boolean[i % 2];
       const commute = boolean[i % 2];
-      const dataNoSQL = `${neighborhoodIdNoSQL},${username},${userType},${dogOwner},${parent},${reviewDate},${reviewText},${likes},${community},${commute}\n`;
-      const dataSQL = `${userId},${neighborhoodIdSQL},${reviewDate},${reviewText},${likes},${community},${commute}\n`;
+      const dataNoSQL = `${neighborhoodId},${username},${userType},${dogOwner},${parent},${reviewDate},${reviewText},${likes},${community},${commute}\n`;
+      const dataSQL = `${userId},${neighborhoodId},${reviewDate},${reviewText},${likes},${community},${commute}\n`;
       const data = db === 'sql' ? dataSQL : dataNoSQL;
       if (i === 0) {
         writer.write(data, encoding, callback);
