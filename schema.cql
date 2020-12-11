@@ -28,7 +28,7 @@ CREATE TABLE homes.stats_by_neighborhood (
   holiday float,
   quiet float,
   wildlife float,
-  PRIMARY KEY (listingId) )
+  PRIMARY KEY (neighborhoodId) )
   WITH comment = 'Q2. Find stats by neighborhood';
 
 CREATE TABLE homes.reviews_by_neighborhood (
@@ -43,5 +43,25 @@ CREATE TABLE homes.reviews_by_neighborhood (
   likes int,
   community boolean,
   commute boolean,
-  PRIMARY KEY (listingId) )
+--   PRIMARY KEY ((listingId), neighborhoodId ) )
+  PRIMARY KEY ((neighborhoodId),listingId ) )
   WITH comment = 'Q3. Find reviews by neighborhood'
+
+-- CREATE TYPE homes.review (
+--   username text,
+--   userType text,
+--   dogOwner boolean,
+--   parent boolean,
+--   reviewDate text,
+--   reviewText text,
+--   likes int,
+--   community boolean,
+--   commute boolean, );
+
+-- CREATE TABLE homes.reviews_by_neighborhood (
+--   neighborhoodId int,
+--   listingId int,
+--   reviews list<frozen <review>>,
+--   PRIMARY KEY (neighborhoodId) )
+--   WITH comment = 'Q3. Find reviews by neighborhood'
+
