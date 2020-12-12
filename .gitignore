@@ -5,6 +5,7 @@ client/public/bundle.js
 ## Key files ##
 *.pem
 *.csv
+*.env
 
 ## NPM ##
 npm
