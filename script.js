@@ -6,6 +6,7 @@ export let errorRate = new Rate('errors');
 
 export let options = {
   stages: [
+    { duration: '10s', target: 100 },
     { duration: '10s', target: 200 }, // below normal load
     { duration: '30s', target: 200 },
     { duration: '10s', target: 400 }, // normal load
@@ -13,13 +14,13 @@ export let options = {
     { duration: '10s', target: 600 }, // around the breaking point
     { duration: '30s', target: 600 },
     { duration: '10s', target: 800 }, // beyond the breaking point
-    { duration: '30s', target: 800 },
-    { duration: '10s', target: 1000 },
-    { duration: '30s', target: 1000 },
-    { duration: '30s', target: 0 },
+    // { duration: '30s', target: 800 },
+    // { duration: '10s', target: 1000 },
+    // { duration: '30s', target: 1000 },
+    // { duration: '30s', target: 0 },
   ],
   thresholds: {
-    // http_req_duration: ['p(99)<50'], // 99% of requests must complete below 50ms
+    http_req_duration: ['p(99)<50'], // 99% of requests must complete below 50ms
     errors: ['rate<0.01'], // <1% errors
   },
 };
@@ -32,3 +33,4 @@ export default function () {
   errorRate.add(!result);
   sleep(1);
 };
+
