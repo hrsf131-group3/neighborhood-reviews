@@ -1,6 +1,6 @@
-# Neighborhood Reviews
+# Real estate web application
 
-> Users can see neighborhood stats and filter reviews based on a variety of categories.
+> This is the reviews service that is part of the real estate web application. Users can see neighborhood statistics and filter reviews based on a variety of categories. The backend of the service was built and scaled to handle 1000rps.
 
 ## Set-up
 
