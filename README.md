@@ -1,6 +1,6 @@
 # Neighborhood Reviews
 
-> This projects features a mock version of Truila's neighborhood reviews. Users can see neighborhood stats and filter reviews based on a variety of categories.
+> Users can see neighborhood stats and filter reviews based on a variety of categories.
 
 ## Set-up
 
